@@ -1,6 +1,6 @@
 package entities;
 
-import enums.Status.status;
+import enums.Status;
 
 public class Caminhonete extends Veiculo {
 	private String combustivel;
@@ -9,7 +9,7 @@ public class Caminhonete extends Veiculo {
 		super();
 	}
 
-	public Caminhonete(String nome, String marca, Integer ano, String cor, status disponibilidade, String combustivel) {
+	public Caminhonete(String nome, String marca, Integer ano, String cor, Status disponibilidade, String combustivel) {
 		super(nome, marca, ano, cor, disponibilidade);
 		this.combustivel = combustivel;
 	}

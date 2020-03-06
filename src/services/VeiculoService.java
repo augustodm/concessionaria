@@ -7,7 +7,7 @@ import entities.Caminhonete;
 import entities.Carro;
 import entities.Moto;
 import entities.Veiculo;
-import enums.Status.status;
+import enums.Status;
 
 public class VeiculoService {
 	static Scanner sc = new Scanner(System.in);
@@ -42,19 +42,19 @@ public class VeiculoService {
 	}
 
 	public void popularVeiculos(List<Veiculo> list) {
-		Veiculo palio1 = new Carro("Palio", "Fiat", 2019, "Preto", status.AVALIABLE, 1.0);
+		Veiculo palio1 = new Carro("Palio", "Fiat", 2019, "Preto", Status.AVALIABLE, 1.0);
 		list.add(palio1);
-		Veiculo palio2 = new Carro("Palio", "Fiat", 2019, "Branco", status.AVALIABLE, 1.8);
+		Veiculo palio2 = new Carro("Palio", "Fiat", 2019, "Branco", Status.AVALIABLE, 1.8);
 		list.add(palio2);
-		Veiculo palio3 = new Carro("Palio", "Fiat", 2020, "Vermelho", status.AVALIABLE, 1.8);
+		Veiculo palio3 = new Carro("Palio", "Fiat", 2020, "Vermelho", Status.AVALIABLE, 1.8);
 		list.add(palio3);
-		Veiculo s10 = new Caminhonete("S10", "GM", 2018, "Preto", status.AVALIABLE, "Gasolina");
+		Veiculo s10 = new Caminhonete("S10", "GM", 2018, "Preto", Status.AVALIABLE, "Gasolina");
 		list.add(s10);
-		Veiculo hilux = new Caminhonete("Hilux", "Toyota", 2019, "Preto", status.AVALIABLE, "Diesel");
+		Veiculo hilux = new Caminhonete("Hilux", "Toyota", 2019, "Preto", Status.AVALIABLE, "Diesel");
 		list.add(hilux);
-		Veiculo ranger = new Caminhonete("Ranger", "Ford", 2020, "Azul", status.AVALIABLE, "Diesel");
+		Veiculo ranger = new Caminhonete("Ranger", "Ford", 2020, "Azul", Status.AVALIABLE, "Diesel");
 		list.add(ranger);
-		Veiculo titan = new Moto("Titan", "Honda", 2017, "Vermelha", status.AVALIABLE, "160c");
+		Veiculo titan = new Moto("Titan", "Honda", 2017, "Vermelha", Status.AVALIABLE, "160c");
 		list.add(titan);
 	}
 
@@ -77,17 +77,17 @@ public class VeiculoService {
 				System.out.println("Qual o motor do carro?(Ex: 1.0, 1.6 ou 1.8)");
 				double motor1 = sc.nextDouble();
 				sc.nextLine();
-				Veiculo car = new Carro(modelo, marca1, ano1, cor, status.AVALIABLE, motor1);
+				Veiculo car = new Carro(modelo, marca1, ano1, cor, Status.AVALIABLE, motor1);
 				list.add(car);
 			} else if (tipo.equals("caminhonete")) {
 				System.out.println("Qual o tipo de combustivel da caminhonete?");
 				String combustivel1 = sc.nextLine();
-				Veiculo car2 = new Caminhonete(modelo, marca1, ano1, cor, status.AVALIABLE, combustivel1);
+				Veiculo car2 = new Caminhonete(modelo, marca1, ano1, cor, Status.AVALIABLE, combustivel1);
 				list.add(car2);
 			} else if (tipo.equals("moto")) {
 				System.out.println("Qual é a cilindrada da moto?");
 				String cilind = sc.nextLine();
-				Veiculo moto1 = new Moto(modelo, marca1, ano1, cor, status.AVALIABLE, cilind);
+				Veiculo moto1 = new Moto(modelo, marca1, ano1, cor, Status.AVALIABLE, cilind);
 				list.add(moto1);
 			} else {
 				System.out.println("Modelo de veículo não conhecido.");
@@ -109,8 +109,8 @@ public class VeiculoService {
 				for (Veiculo veiculos : list) {
 					count3++;
 					while (count3 == num) {
-						if (veiculos.getDisponibilidade() == status.AVALIABLE) {
-							veiculos.setDisponibilidade(status.UNAVALIABLE);
+						if (veiculos.getDisponibilidade() == Status.AVALIABLE) {
+							veiculos.setDisponibilidade(Status.UNAVALIABLE);
 							System.out.println("O carro: " + veiculos.getNome() + " " + veiculos.getMarca() + " "
 									+ veiculos.getAno() + " " + veiculos.getCor() + "] foi alugado com sucesso!");
 							System.out.println();
@@ -137,8 +137,8 @@ public class VeiculoService {
 			for (Veiculo veiculos : List) {
 				count3++;
 				while (count3 == num) {
-					if (veiculos.getDisponibilidade() == status.UNAVALIABLE) {
-						veiculos.setDisponibilidade(status.AVALIABLE);
+					if (veiculos.getDisponibilidade() == Status.UNAVALIABLE) {
+						veiculos.setDisponibilidade(Status.AVALIABLE);
 						System.out.println("O carro: " + veiculos.getNome() + " " + veiculos.getMarca() + " "
 								+ veiculos.getAno() + " " + veiculos.getCor() + "] foi devolvido com sucesso!");
 						System.out.println();

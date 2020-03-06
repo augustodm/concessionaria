@@ -1,8 +1,6 @@
 package enums;
 
-public class Status {
-public enum status {
+public enum Status {
 	AVALIABLE,
 	UNAVALIABLE;
-}
 }

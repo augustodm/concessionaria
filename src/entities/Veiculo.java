@@ -1,19 +1,19 @@
 package entities;
 
-import enums.Status.status;
+import enums.Status;
 
 public class Veiculo {
 	private String nome;
 	private String marca;
 	private Integer ano;
 	private String cor;
-	private status disponibilidade;
+	private Status disponibilidade;
 
 	public Veiculo() {
 
 	}
 
-	public Veiculo(String nome, String marca, Integer ano, String cor, status disponibilidade) {
+	public Veiculo(String nome, String marca, Integer ano, String cor, Status disponibilidade) {
 		super();
 		this.nome = nome;
 		this.marca = marca;
@@ -54,11 +54,11 @@ public class Veiculo {
 		this.cor = cor;
 	}
 
-	public status getDisponibilidade() {
+	public Status getDisponibilidade() {
 		return disponibilidade;
 	}
 
-	public void setDisponibilidade(status disponibilidade) {
+	public void setDisponibilidade(Status disponibilidade) {
 		this.disponibilidade = disponibilidade;
 	}
 
