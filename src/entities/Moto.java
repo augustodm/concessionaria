@@ -2,7 +2,7 @@ package entities;
 
 import enums.Status.status;
 
-public class Moto extends Veiculos {
+public class Moto extends Veiculo {
 	private String cilindrada;
 
 	public Moto() {

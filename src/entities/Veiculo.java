@@ -2,18 +2,18 @@ package entities;
 
 import enums.Status.status;
 
-public class Veiculos {
+public class Veiculo {
 	private String nome;
 	private String marca;
 	private Integer ano;
 	private String cor;
 	private status disponibilidade;
 
-	public Veiculos() {
+	public Veiculo() {
 
 	}
 
-	public Veiculos(String nome, String marca, Integer ano, String cor, status disponibilidade) {
+	public Veiculo(String nome, String marca, Integer ano, String cor, status disponibilidade) {
 		super();
 		this.nome = nome;
 		this.marca = marca;
