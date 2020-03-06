@@ -100,21 +100,25 @@ public class VeiculoService {
 	public void alugarVeiculo(List<Veiculo> list) {
 		String resp3 = "s";
 		while (resp3.equals("s")) {
-			System.out.println("Qual o numero do carro que deseja alugar?");
-			int num = sc.nextInt();
-			int count3 = 0;
-			for (Veiculo veiculos : list) {
-				count3++;
-				while (count3 == num) {
-					if (veiculos.getDisponibilidade() == status.AVALIABLE) {
-						veiculos.setDisponibilidade(status.UNAVALIABLE);
-						System.out.println("O carro: " + veiculos.getNome() + " " + veiculos.getMarca() + " "
-								+ veiculos.getAno() + " " + veiculos.getCor() + "] foi alugado com sucesso!");
-						System.out.println();
-						count3 += num;
-					} else {
-						System.out.println("O carro nao pode ser alugado pois não está disponível.");
-						count3 += num;
+				System.out.println("Qual o numero do carro que deseja alugar?");
+				int num = sc.nextInt();
+				int count3 = 0;
+				if (num > list.size() || num < 1) {
+					System.out.println("Número inválido!");
+				} else {
+				for (Veiculo veiculos : list) {
+					count3++;
+					while (count3 == num) {
+						if (veiculos.getDisponibilidade() == status.AVALIABLE) {
+							veiculos.setDisponibilidade(status.UNAVALIABLE);
+							System.out.println("O carro: " + veiculos.getNome() + " " + veiculos.getMarca() + " "
+									+ veiculos.getAno() + " " + veiculos.getCor() + "] foi alugado com sucesso!");
+							System.out.println();
+							count3 += num;
+						} else {
+							System.out.println("O carro nao pode ser alugado pois não está disponível.");
+							count3 += num;
+						}
 					}
 				}
 			}
@@ -157,12 +161,16 @@ public class VeiculoService {
 		while (resposta2.equals("s")) {
 			System.out.println("Qual o numero do carro que deseja remover?");
 			int num = sc.nextInt();
-			List.remove(num - 1);
-			int counter = 1;
-			for (Veiculo veiculos : List) {
-				System.out.println("[" + counter + "] " + veiculos.getNome() + " " + veiculos.getMarca() + " "
-						+ veiculos.getAno() + " " + veiculos.getCor() + " [" + veiculos.getDisponibilidade() + "]");
-				counter++;
+			if (num > List.size() || num < 1) {
+				System.out.println("Número inválido!");
+			} else {
+				List.remove(num - 1);
+				int counter = 1;
+				for (Veiculo veiculos : List) {
+					System.out.println("[" + counter + "] " + veiculos.getNome() + " " + veiculos.getMarca() + " "
+							+ veiculos.getAno() + " " + veiculos.getCor() + " [" + veiculos.getDisponibilidade() + "]");
+					counter++;
+				}
 			}
 			System.out.println();
 			System.out.println("Deseja remover outro carro? (s/n)");
