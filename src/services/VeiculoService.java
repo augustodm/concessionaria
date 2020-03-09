@@ -12,23 +12,6 @@ import enums.Status;
 public class VeiculoService {
 	static Scanner sc = new Scanner(System.in);
 
-//	public void respMenu(List<Veiculo> List) {
-//		int resp = sc.nextInt();
-//		if (resp == 1) {
-//			VeiculoService.printLista(List);
-//		} else if (resp == 2) {
-//			VeiculoService.adicionarVeiculo(List);
-//		} else if (resp == 3) {
-//			VeiculoService.removerVeiculo(List);
-//		} else if (resp == 4) {
-//			VeiculoService.alugarVeiculo(List);
-//		} else if (resp == 5) {
-//			VeiculoService.devolverVeiculo(List);
-//		} else {
-//			System.out.println("Não reconhecemos sua resposta");
-//		}
-//	}
-
 	public void printLista(List<Veiculo> list) {
 		System.out.println("Nossa Lista de Veículos atual é: ");
 		System.out.println("-----------------------------------------------");
@@ -100,12 +83,12 @@ public class VeiculoService {
 	public void alugarVeiculo(List<Veiculo> list) {
 		String resp3 = "s";
 		while (resp3.equals("s")) {
-				System.out.println("Qual o numero do carro que deseja alugar?");
-				int num = sc.nextInt();
-				int count3 = 0;
-				if (num > list.size() || num < 1) {
-					System.out.println("Número inválido!");
-				} else {
+			System.out.println("Qual o numero do carro que deseja alugar?");
+			int num = sc.nextInt();
+			int count3 = 0;
+			if (num > list.size() || num < 1) {
+				System.out.println("Número inválido!");
+			} else {
 				for (Veiculo veiculos : list) {
 					count3++;
 					while (count3 == num) {
@@ -125,6 +108,11 @@ public class VeiculoService {
 			System.out.println("Deseja alugar outro veículo?(s/n)");
 			sc.nextLine();
 			resp3 = sc.nextLine();
+			while (!resp3.equals("s") && !resp3.equals("n")) {
+				System.out.println("Resposta inválida!");
+				System.out.println("Deseja alugar outro veículo?(s/n)");
+				resp3 = sc.nextLine();
+			}
 		}
 	}
 
@@ -134,25 +122,29 @@ public class VeiculoService {
 			System.out.println("Qual o numero do carro que deseja devolver?");
 			int num = sc.nextInt();
 			int count3 = 0;
-			for (Veiculo veiculos : List) {
-				count3++;
-				while (count3 == num) {
-					if (veiculos.getDisponibilidade() == Status.UNAVALIABLE) {
-						veiculos.setDisponibilidade(Status.AVALIABLE);
-						System.out.println("O carro: " + veiculos.getNome() + " " + veiculos.getMarca() + " "
-								+ veiculos.getAno() + " " + veiculos.getCor() + "] foi devolvido com sucesso!");
-						System.out.println();
-						count3 += num;
-					} else {
-						System.out.println("O carro nao pode ser devolvido pois não está alugado.");
-						count3 += num;
+			if (num > List.size() || num < 1) {
+				System.out.println("Número inválido!");
+			} else {
+				for (Veiculo veiculos : List) {
+					count3++;
+					while (count3 == num) {
+						if (veiculos.getDisponibilidade() == Status.UNAVALIABLE) {
+							veiculos.setDisponibilidade(Status.AVALIABLE);
+							System.out.println("O carro: " + veiculos.getNome() + " " + veiculos.getMarca() + " "
+									+ veiculos.getAno() + " " + veiculos.getCor() + "] foi devolvido com sucesso!");
+							System.out.println();
+							count3 += num;
+						} else {
+							System.out.println("O carro nao pode ser devolvido pois não está alugado.");
+							count3 += num;
+						}
 					}
 				}
+				System.out.println();
+				System.out.println("Deseja devolver um novo veiculo?(s/n)");
+				sc.nextLine();
+				resposta = sc.nextLine();
 			}
-			System.out.println();
-			System.out.println("Deseja devolver um novo veiculo?(s/n)");
-			sc.nextLine();
-			resposta = sc.nextLine();
 		}
 	}
 

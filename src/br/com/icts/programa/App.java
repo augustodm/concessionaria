@@ -38,6 +38,12 @@ public class App {
 			System.out.println("Deseja realizar uma nova operação? (s/n)");
 			sc.nextLine();
 			resp1 = sc.nextLine();
+			while (!resp1.equals("s") && !resp1.equals("n")) {
+				System.out.println("Resposta inválida!");
+				System.out.println("Deseja realizar uma nova operação? (s/n)");
+				resp1 = sc.nextLine();
+			}
+				
 		}
 		System.out.println("Operação finalizada.");
 		sc.close();
